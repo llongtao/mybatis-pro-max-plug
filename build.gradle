@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.4.21'
+
+}
+
+group 'com.llt'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    maven { url "https://maven.aliyun.com/repository/public" }
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'com.llt', name: 'mybatis-helper-core', version: '1.2.0.RELEASE'
+//    compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.12.1'
+    compile 'org.slf4j:slf4j-log4j12:1.7.25'
+}
+
+
+
+apply plugin: 'org.jetbrains.intellij'
+apply plugin: 'java'
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version '2020.1.4'
+    pluginName 'mybatis-pro-max-plug'
+    updateSinceUntilBuild false
+    sameSinceUntilBuild false
+
+}
+patchPluginXml {
+    pluginDescription(file('src/main/resources/pluginDescription.html').text)
+    changeNotes(file('src/main/resources/changeNotes.html').text)
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

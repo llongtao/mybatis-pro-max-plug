@@ -1,0 +1,30 @@
+<idea-plugin require-restart="false">
+    <id>com.llt.mybatis.pro.max.plus</id>
+    <name>mybatis-pro-max-plus</name>
+    <version>1.3</version>
+    <vendor email="1132111029@qq.com" url="http://www.aexp.top">lilongtao</vendor>
+
+    <description><![CDATA[ Description will be added by gradle build]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="173.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    -->
+<!--    <depends>com.intellij.modules.java</depends>-->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="000" class="com.llt.mybatis.pro.max.plug.MybatisProMaxPlusAction" text="mybatis生成器"
+                description="mybatis生成器">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
+
+</idea-plugin>
