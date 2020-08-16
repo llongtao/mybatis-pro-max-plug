@@ -70,14 +70,12 @@ public class BaseConfigForm {
                 use.setEnabled(true);
                 pwd.setEnabled(true);
                 dbUrl.setEnabled(true);
-                js.setEnabled(true);
                 update();
             } else {
                 dbUrl.setEnabled(false);
                 use.setEnabled(false);
                 pwd.setEnabled(false);
                 dbUrl.setEnabled(false);
-                js.setEnabled(false);
                 update();
             }
         });
@@ -85,6 +83,7 @@ public class BaseConfigForm {
         js = new JComboBox(new String[]{"mysql","pgsql"});
         js.setSelectedIndex(0);
         js.setPreferredSize(new Dimension(150, 25));
+        js.addItemListener(e -> update());
         JLabel db = new JLabel("数据库:");
         JLabel dbUrlL = new JLabel("地址:");
         dbUrl = new JTextField(data.getBaseDbUrl());
@@ -133,7 +132,14 @@ public class BaseConfigForm {
         use.getDocument().addDocumentListener(documentListener);
         pwd.getDocument().addDocumentListener(documentListener);
 
-
+        ConfigDataHolder.registerDataChangeConsumer(config -> {
+            config.setDbType(Objects.toString(js.getSelectedItem()));
+            config.setBaseDbUrl( dbUrl.getText());
+            config.setBaseDbUsername(use.getText());
+            config.setBaseDbPassword(new String(pwd.getPassword()));
+            config.setUseDb(checkbox.getState());
+            config.setDropTable(rebuild.getState());
+        });
     }
 
     private void update() {

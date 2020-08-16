@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
+import java.util.function.Consumer;
 
 /**
  * @author LILONGTAO
@@ -21,6 +22,7 @@ public class ConfigDataHolder  {
     private static Logger log = Logger.getInstance(ConfigDataHolder.class);
     private static Config config ;
     private static Project project ;
+    private static List<Consumer<Config>> dataChangeConsumerList = new ArrayList<>();
 
     public static void updateBuildConfig(Vector<Vector> dataVector) {
 
@@ -96,7 +98,12 @@ public class ConfigDataHolder  {
     }
 
     public static Config getData() {
+        dataChangeConsumerList.forEach(consumer -> consumer.accept(config));
         return config;
+    }
+
+    public static void registerDataChangeConsumer(Consumer<Config> configConsumer) {
+        dataChangeConsumerList.add(configConsumer);
     }
 
     public static void setContext(Project project) {
