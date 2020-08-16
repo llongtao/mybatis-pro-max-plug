@@ -86,7 +86,11 @@ public class ConfigDataHolder  {
 
         String s = JSON.toJSONString(config);
         log.info("saveConfig:"+s);
-        PropertiesComponent.getInstance().setValue(getConfigName(project),s);
+        String configName = getConfigName(project);
+        if (configName != null) {
+            PropertiesComponent.getInstance().setValue(configName,s);
+        }
+
         System.out.println(s);
         return config;
     }
@@ -97,24 +101,28 @@ public class ConfigDataHolder  {
 
     public static void setContext(Project project) {
         ConfigDataHolder.project = project;
-        loadConfig(getConfigName(project) );
+        String configName = getConfigName(project);
+        loadConfig( configName);
     }
     private static String getConfigName(Project project){
         if (project == null) {
-            return "mybatis-pro-max-config";
+            return null;
         }
         return "mybatis-pro-max-config:"+project.getName();
     }
 
     private static void loadConfig(String name){
-        try {
-            String configStr = PropertiesComponent.getInstance().getValue(name, StringUtils.EMPTY);
-            if (!StringUtils.isEmpty(configStr)) {
-                ConfigDataHolder.config  = JSON.parseObject(configStr, Config.class);
+        if (name != null) {
+            try {
+                String configStr = PropertiesComponent.getInstance().getValue(name, StringUtils.EMPTY);
+                if (!StringUtils.isEmpty(configStr)) {
+                    ConfigDataHolder.config  = JSON.parseObject(configStr, Config.class);
+                }
+            } catch (Exception e) {
+                log.warn("找不到配置文件", e);
             }
-        } catch (Exception e) {
-            log.warn("找不到配置文件", e);
         }
+
 
         if (config == null) {
             config = new Config();
