@@ -19,8 +19,10 @@ public class MainDialog extends DialogWrapper {
 
     public MainDialog(Project project, AnActionEvent e) {
         super(true);
+
+
         //设置会话框标题
-        setTitle("Mybatis生成器");
+        setTitle("Mybatis生成器("+project.getName()+")");
         //获取到当前项目
         this.project = project;
         this.e = e;

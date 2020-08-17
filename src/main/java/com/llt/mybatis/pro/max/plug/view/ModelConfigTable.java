@@ -46,7 +46,6 @@ public class ModelConfigTable {
                 vector.add(item.getDescription());
                 vector.add("");
                 vector.add("");
-                vector.add("");
                 dataVector.add(vector);
             });
         }else {
@@ -57,7 +56,6 @@ public class ModelConfigTable {
             vector.add("");
             vector.add("");
             vector.add(true);
-            vector.add("");
             vector.add("");
             vector.add("");
             vector.add("");

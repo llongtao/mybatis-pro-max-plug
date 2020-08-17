@@ -56,7 +56,7 @@ public class ConfigDataHolder  {
                             (String) vector.get(0),
                             (String) vector.get(1),
                             (String) vector.get(2),
-                            null,
+                            (String) vector.get(2),
                             null,
                             null,
                             (String) vector.get(3),

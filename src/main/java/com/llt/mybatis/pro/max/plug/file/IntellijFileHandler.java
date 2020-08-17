@@ -1,5 +1,6 @@
 package com.llt.mybatis.pro.max.plug.file;
 
+import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -27,8 +28,8 @@ public class IntellijFileHandler implements FileHandler {
         this.project = project;
     }
 
-    private String getFileUrl(String path){
-        return "file://"+path;
+    private String getFileUrl(String path) {
+        return "file://" + path;
     }
 
     @Override
@@ -39,13 +40,14 @@ public class IntellijFileHandler implements FileHandler {
             return Collections.EMPTY_LIST;
         }
         VirtualFile[] children = fileByUrl.getChildren();
-        return Arrays.stream(children).map(VirtualFile::getPath).collect(Collectors.toList());
+        return Arrays.stream(children).filter(item->!item.isDirectory()).map(VirtualFile::getPath).collect(Collectors.toList());
     }
 
     @Override
     public String readJavaFileToString(String path, String charset) {
         VirtualFile fileByUrl = VirtualFileManager.getInstance().findFileByUrl(getFileUrl(path));
-        if (fileByUrl == null) {
+
+        if (fileByUrl == null || fileByUrl.isDirectory()) {
             return null;
         }
         PsiFile psiFile = PsiUtilBase.getPsiFile(project, fileByUrl);
@@ -63,7 +65,7 @@ public class IntellijFileHandler implements FileHandler {
 
     @Override
     public void writerString2File(String path, String str, String charset) throws IOException {
-        FileUtils.writerString2File(path,str,charset);
+        FileUtils.writerString2File(path, str, charset);
         LocalFileSystem.getInstance().refreshIoFiles(Collections.singletonList(new File(path)));
     }
 

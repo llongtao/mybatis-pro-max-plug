@@ -12,10 +12,7 @@ import com.llt.mybatis.pro.max.plug.view.BuildConfigTable;
 import com.llt.mybatis.pro.max.plug.view.ConfigDataHolder;
 import com.llt.mybatis.pro.max.plug.view.ModelConfigTable;
 import com.llt.mybatishelper.core.data.DataSourceHolder;
-import com.llt.mybatishelper.core.model.BuildConfig;
-import com.llt.mybatishelper.core.model.BuildResult;
-import com.llt.mybatishelper.core.model.Config;
-import com.llt.mybatishelper.core.model.Log;
+import com.llt.mybatishelper.core.model.*;
 import com.llt.mybatishelper.core.start.MyBatisHelperStarter;
 import com.llt.mybatishelper.core.utils.CollectionUtils;
 import com.llt.mybatishelper.core.utils.StringUtils;
@@ -145,8 +142,8 @@ public class MainSwing {
             try {
                 Config config = ConfigDataHolder.getData();
                 if (Objects.equals(config.getDropTable(),true)&& Objects.equals(config.getUseDb(),true)) {
-                    @SuppressWarnings("MissingRecentApi") int i = Messages.showConfirmationDialog(new JLabel("重建表会清除所有数据,确认执行"), "重建表会清除所有数据,确认执行?", "警告", "确认", "取消");
-                    if (0 != i) {
+                    int i = Messages.showYesNoDialog(project, "重建表会清除所有数据,确认执行?", "警告", "确认", "取消",Messages.getWarningIcon());
+                    if (Messages.YES != i) {
                         submit.setEnabled(true);
                         return;
                     }
@@ -187,6 +184,7 @@ public class MainSwing {
     private void checkStartConfigAndConfigDataSource(Config config) {
         boolean useDb = Objects.equals(config.getUseDb(), true);
         List<BuildConfig> buildConfigList = config.getBuildConfigList();
+        List<EntityField> baseEntityFieldList = config.getBaseEntityFieldList();
         if (CollectionUtils.isEmpty(buildConfigList)) {
             throw new IllegalArgumentException("配置信息不能为空");
         }
@@ -198,6 +196,15 @@ public class MainSwing {
                 throw new IllegalArgumentException("配置文件夹信息不能为空");
             }
         }
+        for (EntityField entityField : baseEntityFieldList) {
+            if (StringUtils.isEmpty(entityField.getColumnName())) {
+                throw new IllegalArgumentException("基类属性列名不能为空");
+            }
+            if (StringUtils.isEmpty(entityField.getType())) {
+                throw new IllegalArgumentException("基类属性类型不能为空");
+            }
+        }
+
 
 
         if (useDb) {
