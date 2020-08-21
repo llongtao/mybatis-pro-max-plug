@@ -1,22 +1,31 @@
-
 <a href="http://aexp.top/#/articles/1250">If you have any questions, please leave a message to discuss</a><br>
-<a href="https://github.com/llongtao/mybatis-helper">mybatis-helper github source</a><br>
+<a href="https://github.com/llongtao/mybatis-helper/tree/v1.2.0">mybatis-helper github source</a><br>
 <a href="https://github.com/llongtao/mybatis-pro-max-plug">plug github source</a>
 
-<div data-v-6dc3f986="" class="article-body"><div data-v-6dc3f986="" class="markdown-body">
-    <p><strong>1.Panel description </strong></p>
-    <p><img src="https://gz.bcebos.com/v1/longtao/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200620120124.png" alt="https://gz.bcebos.com/v1/longtao/微信截图_20200620120124.png"></p>
+<div data-v-6dc3f986="" class="article-body">
+    <div data-v-6dc3f986="" class="markdown-body">
+        <p><strong>1.Brief introduction</strong></p>
+        <p> with this tool, you can use mybatis as you would use spring-jpa without introducing any dependencies </p>
+        <p> tool principle is to read javaBean file, generate mapper and database operation SQL </p>
+        <p> lets you develop the process without switching back and forth between ide and database tools, without worrying about modifying fields, the development process is extremely smooth </p>
+        <p> plug-in location tool menu ->mybatis生成器 </p>
 
-    <br>
-    <p><strong>2.Quick start</strong></p>
-    Step 1: add .auto to the Java Doc Comments of your entity class and .key to the Java Doc Comments on the primary key field
-    </p>
-    <pre><code class="language-java"><span class="hljs-comment">
+        <p><strong>2.Panel description </strong></p>
+        <p><img src="https://gz.bcebos.com/v1/longtao/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200620120124.png"
+                alt="https://gz.bcebos.com/v1/longtao/微信截图_20200620120124.png"></p>
+
+        <br>
+        <p><strong>3.Quick start</strong></p>
+        Step 1: add .auto to the Java Doc Comments of your entity class and .key to the Java Doc Comments on the primary
+        key field
+        </p>
+        <pre><code class="language-java"><span class="hljs-comment">
         /**
          *.auto
          */
          </span>
-        <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">User</span>{
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span
+                    class="hljs-symbol">User</span>{
 
         <span class="hljs-comment">
         /**
@@ -27,74 +36,51 @@
         <span class="hljs-keyword">private</span> String name;
 
         }</code></pre>
-    <p>
-        Step 2: click submit on configuration panel
-    </p>
+        <p>
+            Step 2: click submit on configuration panel
+        </p>
 
-    <br>
-    <p><strong>3.  More keywords</strong></p>
-    <ul>
-        <li><p>Comments of class</p>
-            <ul>
-                <li><strong>.auto required</strong> Include this field for automatic generation</li>
-                <li>.tableName xxx optional  Custom table name, using class name underline by default</li>
-                <li>.entityName xxx optional  Custom entity name, class name is used by default</li>
-                <li>.desc xxx optional Customize the table description</li>
-                <li>.keyType xxx optional Primary key specifies the primary key type when the base class uses generics</li>
-            </ul>
-        </li>
-        <li><p>Comments of field</p>
-            <ul>
-                <li>.key optional Indicates that the field is the primary key</li>
-                <li>.column optional Custom column name, using the underline format of field name by default</li>
-                <li>.jdbcType xxx optional JDBC type of custom mapping</li>
-                <li>.len xx optional Custom length</li>
-                <li>.desc xxx optional Custom field description</li>
-                <li>.notNull optional notNull</li>
-                <li>.default xxx optional default</li>
-                <li>.ignore optional Ignore this field</li>
-                <li>.enum optional Represents an enumeration. If not, no enumeration will be generated</li>
-            </ul>
-        </li>
-        <li><p>others</p>
-            <ul>
-                <li>Automatically use the column with field name ID as the primary key when the primary key does not exist</li>
-                <li>Default auto increment when there is only one primary key and it is an integer</li>
-                <li>Primary key not allowed not to exist</li>
-                <li>Static members are not counted in columns</li>
-                <li>Members of the parent class will not be included in the column, which needs to be filled in the base class field</li>
-                <li>Mapper will create a base folder in the directory you specify, and generate a basemapper, which does not affect the existing mapper. The existing mapper inherits the basemapper</li>
-                <li>If a basemapper with the same name as the automatically generated basemapper may exist in the specified folder, it will be overwritten directly</li>
-                <li>Because subdirectories will be created, please set mapper location to allow subdirectories, such as "classpath *: mappers / * / *. XML"</li>
-                <li>Do not allow non-standard Javadoc comments, such as empty lines under comments or multiple Javadoc comments</li>
-                <li>Enumeration currently only supports the default string form</li>
-            </ul>
-        </li>
-    </ul>
-    I hope this project can help you. Your support is my driving force
-    <br>
-    <img src="https://gz.bcebos.com/v1/longtao/%E6%8D%90%E5%8A%A9.png" alt="https://gz.bcebos.com/v1/longtao/捐助.png"></p>
-</div>
+        <br>
+        <p><strong>4. More keywords</strong></p>
+        <a href="https://github.com/llongtao/mybatis-helper/tree/v1.2.0">see mybatis-helper description</a><br><br><br>
+        I hope this project can help you. Your support is my driving force
+        <br>
+        <img src="https://gz.bcebos.com/v1/longtao/%E6%8D%90%E5%8A%A9.png"
+             alt="https://gz.bcebos.com/v1/longtao/捐助.png"></p>
+    </div>
 </div>
 
 <hr>中文版<br><br><br>
 <a href="http://aexp.top/#/articles/1250">如果有什么问题欢迎留言讨论</a><br>
-<a href="https://github.com/llongtao/mybatis-helper">插件依赖 mybatis-helper 源码地址</a><br>
+<a href="https://github.com/llongtao/mybatis-helper/tree/v1.2.0">插件依赖 mybatis-helper 源码地址</a><br>
 <a href="https://github.com/llongtao/mybatis-pro-max-plug">插件源码地址</a>
 <br>
-<div data-v-6dc3f986="" class="article-body"><div data-v-6dc3f986="" class="markdown-body"><p><strong>一、面板说明(Panel description) </strong></p>
-    <p><img src="https://gz.bcebos.com/v1/longtao/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200620120124.png" alt="https://gz.bcebos.com/v1/longtao/微信截图_20200620120124.png"></p>
 
-    <br>
-    <p><strong>二、快速开始</strong></p>
-    <p>第一步: 在你的实体类javadoc注释里加入 .auto 并在主键field上的javadoc注释里加入.key
-    </p>
-    <pre><code class="language-java"><span class="hljs-comment">
+
+
+<div data-v-6dc3f986="" class="article-body">
+
+    <div data-v-6dc3f986="" class="markdown-body"><p><strong>一、简介</strong></p>
+        <p>使用此工具,你可以像使用spring-jpa一样使用mybatis,而且不用引入任何依赖</p>
+        <p>工具原理是读取javaBean文件,生成mapper与数据库操作sql</p>
+        <p>让你的开发过程不用在ide与数据库工具来回切换,不用再为修改字段而发愁,开发过程无比顺滑</p>
+        <p>插件位置 tool菜单->mybatis生成器</p>
+
+    <div data-v-6dc3f986="" class="markdown-body"><p><strong>二、面板说明(Panel description) </strong></p>
+        <p><img src="https://gz.bcebos.com/v1/longtao/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200620120124.png"
+                alt="https://gz.bcebos.com/v1/longtao/微信截图_20200620120124.png"></p>
+
+        <br>
+        <p><strong>二、快速开始</strong></p>
+        <p>第一步: 在你的实体类javadoc注释里加入 .auto 并在主键field上的javadoc注释里加入.key
+        </p>
+        <pre><code class="language-java"><span class="hljs-comment">
         /**
          *.auto
          */
          </span>
-        <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">User</span>{
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span
+                    class="hljs-symbol">User</span>{
 
         <span class="hljs-comment">
         /**
@@ -105,65 +91,18 @@
         <span class="hljs-keyword">private</span> String name;
 
         }</code></pre>
-    <p>
-        第二步: 配置面板点击提交
-    </p>
+        <p>
+            第二步: 配置面板点击提交
+        </p>
 
-    <br>
-    <p><strong>三、  更多关键字</strong></p>
-    <ul>
-        <li><p>class注释</p>
-            <ul>
-                <li><strong>.auto 必选</strong> 包含该字段才会自动生成</li>
-                <li>.tableName xxx 可选 自定义表名,默认使用类名下划线形式</li>
-                <li>.entityName xxx 可选 自定义实体名,默认使用类名</li>
-                <li>.desc xxx 可选 自定义该表描述</li>
-
-                <li>.keyType xxx 可选 主键在基类使用泛型时指定主键类型</li>
-
-            </ul>
-        </li>
-        <li><p>field注释</p>
-            <ul>
-                <li>.key 可选 表示该field为主键</li>
-
-                <li>.column 可选 自定义列名,默认使用field名的下划线格式</li>
-
-                <li>.jdbcType xxx 可选 自定义映射的jdbcType</li>
-
-                <li>.len xx 可选 自定义长度</li>
-
-                <li>.desc xxx 可选 自定义字段描述</li>
-
-                <li>.notNull 可选 非空</li>
-
-                <li>.default xxx 可选 默认值</li>
-
-                <li>.ignore 可选 忽略该字段</li>
-
-                <li>.enum 可选 表示一个枚举,若不加则不生成枚举</li>
-
-            </ul>
-        </li>
-        <li><p>其他细节</p>
-            <ul>
-                <li>当主键不存在时自动使用field名为id的列为主键</li>
-                <li>当主键只有一个且为整形时默认自增</li>
-                <li>不允许主键不存在</li>
-                <li>静态成员不会计入列</li>
-                <li>父类成员不会计入列,需要在基类字段填写</li>
-                <li>mapper会在你指定的目录下创建base文件夹,并生成baseMapper,不影响现有mapper,现有mapper继承baseMapper即可(会自动继承)</li>
-                <li>若指定文件夹下可能存在与自动生成同名baseMapper慎重使用,会直接覆盖</li>
-                <li>因为会创建子目录所以mapper-location 请设置为允许子目录,例如"classpath*:mappers/**/*.xml"</li>
-                <li>不允许不规范的javadoc注释,例如注释下有空行,或者多个javadoc注释</li>
-                <li>枚举目前仅支持默认字符串形式</li>
-
-            </ul>
-        </li>
-    </ul>
-    <p>希望该项目对您有所帮助,您的支持就是我的动力
         <br>
+        <p><strong>三、 更多配置关键字</strong></p>
+        <a href="https://github.com/llongtao/mybatis-helper/tree/v1.2.0">更多细节请查看mybatis-helper描述</a><br><br><br>
 
-        <img src="https://gz.bcebos.com/v1/longtao/%E6%8D%90%E5%8A%A9.png" alt="https://gz.bcebos.com/v1/longtao/捐助.png"></p>
-</div>
+        <p>希望该项目对您有所帮助,您的支持就是我的动力
+            <br>
+
+            <img src="https://gz.bcebos.com/v1/longtao/%E6%8D%90%E5%8A%A9.png"
+                 alt="https://gz.bcebos.com/v1/longtao/捐助.png"></p>
+    </div>
 </div>

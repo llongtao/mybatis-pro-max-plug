@@ -188,6 +188,7 @@ public class MainSwing {
         if (CollectionUtils.isEmpty(buildConfigList)) {
             throw new IllegalArgumentException("配置信息不能为空");
         }
+        boolean useBase = false;
         for (BuildConfig buildConfig1 : buildConfigList) {
             if (StringUtils.isEmpty(buildConfig1.getMapperFolder()) ||
                     StringUtils.isEmpty(buildConfig1.getEntityFolder()) ||
@@ -195,16 +196,20 @@ public class MainSwing {
             ) {
                 throw new IllegalArgumentException("配置文件夹信息不能为空");
             }
-        }
-        for (EntityField entityField : baseEntityFieldList) {
-            if (StringUtils.isEmpty(entityField.getColumnName())) {
-                throw new IllegalArgumentException("基类属性列名不能为空");
-            }
-            if (StringUtils.isEmpty(entityField.getType())) {
-                throw new IllegalArgumentException("基类属性类型不能为空");
+            if (!Objects.equals(buildConfig1.getIgnoreBaseField(),true)) {
+                useBase = true;
             }
         }
-
+        if (useBase) {
+            for (EntityField entityField : baseEntityFieldList) {
+                if (StringUtils.isEmpty(entityField.getColumnName())) {
+                    throw new IllegalArgumentException("基类属性列名不能为空");
+                }
+                if (StringUtils.isEmpty(entityField.getType())) {
+                    throw new IllegalArgumentException("基类属性java类型不能为空");
+                }
+            }
+        }
 
 
         if (useDb) {
