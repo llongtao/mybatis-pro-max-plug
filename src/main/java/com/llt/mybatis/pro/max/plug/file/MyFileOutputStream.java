@@ -1,11 +1,8 @@
 package com.llt.mybatis.pro.max.plug.file;
 
 import com.intellij.openapi.vfs.LocalFileSystem;
-import com.intellij.openapi.vfs.VirtualFileManager;
 import org.jetbrains.annotations.NotNull;
-
 import java.io.*;
-import java.util.Arrays;
 import java.util.Collections;
 
 /**
