@@ -1,3 +1,14 @@
+v1.6
+<ul>
+    <li>优化表结构修改,现在每次生成会删除已删除的列,并修改已存在的列</li>
+    <li>添加.define注释,支持自定义列定义,优先级最高可覆盖JDBC_TYPE\LEN\NO_NULL\DEFAULT\DESC注释</li>
+    <li>修改部分JDBCType到数据库类型的映射</li>
+    <li>.key注释修改为可追加incr属性,表示数据库自增</li>
+    <li>core执行api允许自定义EntityBuilder,MapperBuilder,XmlBuilder</li>
+    <li>添加sql执行日志,默认保存在xml目录下sql文件夹</li>
+</ul>
+
+v1.5
 <ul>
     <li>修复:生成sql长度为空的判断</li>
     <li>优化:重构了文档描述,漏了最关键的插件位置</li>
@@ -9,12 +20,26 @@
     <li>优化:生成器优化/增加部分功能,详情请查看描述文件 https://github.com/llongtao/mybatis-helper</li>
     <li>修复:字符集问题,默认以utf-8输出</li>
 </ul>
+
+<br/>
+English
+<br/>
+v1.6
 <ul>
-<li>Fix: unable to read the disk file in memory. The edited file can be read even if it is not written to the disk</li>
-<li>Optimization: add the function of refreshing the disk to modify the file, which can be viewed immediately after the file is generated</li>
-<li>Optimization: added rebuild table function</li>
-<li>Optimization: added tick configuration function</li>
-<li>Optimization: support each project to save configuration file separately</li>
-<li>Optimization: generator optimization / add some functions, please see the description file for details https://github.com/llongtao/mybatis-helper </li>
-<li>Fix: character set problem, output in UTF-8 by default</li>
+    <li>Optimize the table structure modification. Now every generation will delete the deleted columns and modify the existing columns</li>
+    <li>Add. Define annotation, support custom column definition, and the highest priority can override JDBC_ TYPE\LEN\NO_ Null / default / desc comment</li>
+    <li>Modify part of the JDBC type to database type mapping</li>
+    <li>The. Key annotation can be modified to appendable incr attribute, which indicates that the database is auto incremented</li>
+    <li>The core execution API allows customization of entitybuilder, mapperbuilder, and xmlbuilder</li>
+    <li>Add SQL execution log, which is saved in SQL folder under XML directory by default</li>
+</ul>
+v1.5
+<ul>
+    <li>Fix: unable to read the disk file in memory. The edited file can be read even if it is not written to the disk</li>
+    <li>Optimization: add the function of refreshing the disk to modify the file, which can be viewed immediately after the file is generated</li>
+    <li>Optimization: added rebuild table function</li>
+    <li>Optimization: added tick configuration function</li>
+    <li>Optimization: support each project to save configuration file separately</li>
+    <li>Optimization: generator optimization / add some functions, please see the description file for details https://github.com/llongtao/mybatis-helper </li>
+    <li>Fix: character set problem, output in UTF-8 by default</li>
 </ul>
