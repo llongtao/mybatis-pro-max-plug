@@ -1,7 +1,7 @@
 <idea-plugin require-restart="false">
     <id>com.llt.mybatis.pro.max.plus</id>
     <name>mybatis-pro-max-plug</name>
-    <version>1.5</version>
+    <version>1.6</version>
     <vendor email="1132111029@qq.com" url="http://www.aexp.top">lilongtao</vendor>
 
     <description><![CDATA[ Description will be added by gradle build]]></description>

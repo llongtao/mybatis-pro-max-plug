@@ -55,6 +55,17 @@ public class IntellijFileHandler implements FileHandler {
     }
 
     @Override
+    public String readFileToString(String path, String charset) {
+        VirtualFile fileByUrl = VirtualFileManager.getInstance().findFileByUrl(getFileUrl(path));
+
+        if (fileByUrl == null || fileByUrl.isDirectory()) {
+            return null;
+        }
+        PsiFile psiFile = PsiUtilBase.getPsiFile(project, fileByUrl);
+        return psiFile.getText();
+    }
+
+    @Override
     public void mkdir(String path) {
         File file = new File(path);
         if (!file.exists()) {

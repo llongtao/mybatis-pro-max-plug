@@ -59,6 +59,7 @@ public class ConfigDataHolder  {
                             (String) vector.get(2),
                             null,
                             null,
+                            false,
                             (String) vector.get(3),
                             (String) vector.get(4),
                             !(Boolean) vector.get(5),
@@ -137,7 +138,7 @@ public class ConfigDataHolder  {
             config.setBaseDbUsername("root");
             config.setDbType("mysql");
             config.setBaseDbUrl("127.0.0.1:3306");
-            config.setBaseEntityFieldList(Collections.singletonList(new EntityField("id","id","Integer",null,null,null,null,null,false,"主键",null)));
+            config.setBaseEntityFieldList(Collections.singletonList(new EntityField("id","id","Integer",null,null,null,false,null,null,false,"主键",null)));
             config.setBuildConfigList(Collections.singletonList(new BuildConfig(StringUtils.EMPTY,StringUtils.EMPTY,StringUtils.EMPTY,StringUtils.EMPTY,StringUtils.EMPTY,StringUtils.EMPTY,StringUtils.EMPTY,true,false)));
         }
 

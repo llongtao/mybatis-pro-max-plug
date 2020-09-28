@@ -151,7 +151,7 @@ public class MainSwing {
 
                 checkStartConfigAndConfigDataSource(config);
                 BuildResult run = MyBatisHelperStarter.db(config.getDbType())
-                        .withFileHandler(new IntellijFileHandler(project)).run(config);
+                        .fileHandler(new IntellijFileHandler(project)).run(config);
                 List<Log> logs = run.getLogs();
                 StringBuilder stringBuilder = new StringBuilder();
                 logs.forEach(item->stringBuilder.append(item).append("\r\n"));
