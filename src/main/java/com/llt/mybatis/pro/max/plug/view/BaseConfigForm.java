@@ -1,5 +1,6 @@
 package com.llt.mybatis.pro.max.plug.view;
 
+import com.intellij.openapi.ui.ComboBox;
 import com.llt.mybatishelper.core.model.Config;
 
 import javax.swing.*;
@@ -8,14 +9,15 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.util.Objects;
+import java.util.Vector;
 
 /**
  * @author LILONGTAO
  */
 public class BaseConfigForm {
 
-    private Checkbox checkbox;
-    private Checkbox rebuild;
+    private JCheckBox checkbox;
+    private JCheckBox rebuild;
     private JTextField use;
     private JPasswordField pwd;
     private JTextField dbUrl;
@@ -58,10 +60,10 @@ public class BaseConfigForm {
         grid9.gridy = 5;
 
 
-        checkbox = new Checkbox("生成表结构");
-        checkbox.setState(Objects.equals(data.getUseDb(),true));
-        rebuild = new Checkbox("重新生成表");
-        rebuild.setState(Objects.equals(data.getUseDb(),false));
+        checkbox = new JCheckBox("生成表结构");
+        checkbox.setSelected(Objects.equals(data.getUseDb(),true));
+        rebuild = new JCheckBox("重新生成表");
+        rebuild.setSelected(Objects.equals(data.getUseDb(),false));
         rebuild.addItemListener(e -> update());
         checkbox.addItemListener(e -> {
 
@@ -80,20 +82,28 @@ public class BaseConfigForm {
             }
         });
 
-        js = new JComboBox(new String[]{"mysql","pgsql"});
+        js = new ComboBox<>(new String[]{"mysql", "pgsql"});
         js.setSelectedIndex(0);
         js.setPreferredSize(new Dimension(150, 25));
         js.addItemListener(e -> update());
         JLabel db = new JLabel("数据库:");
         JLabel dbUrlL = new JLabel("地址:");
-        dbUrl = new JTextField(data.getBaseDbUrl());
+        dbUrl = new JTextField(data.getBaseDbUrl(),24);
+        dbUrl.setEditable(true);
+        //dbUrl.setBounds(0,0,150,25);
+        dbUrl.setSize(150, 25);
+        dbUrl.setMinimumSize(new Dimension(150, 25));
         dbUrl.setPreferredSize(new Dimension(150, 25));
+
         JLabel username = new JLabel("帐号:");
         JLabel userpwd = new JLabel("密码:");
-        use = new JTextField(data.getBaseDbUsername());
+        use = new JTextField(data.getBaseDbUsername(),24);
+        use.setSize(150, 25);
+        use.setMinimumSize(new Dimension(150, 25));
         use.setPreferredSize(new Dimension(150, 25));
-        pwd = new JPasswordField(data.getBaseDbPassword());
-        pwd.setColumns(24);
+        pwd = new JPasswordField(data.getBaseDbPassword(),24);
+        pwd.setSize(1500, 25);
+        pwd.setMinimumSize(new Dimension(150, 25));
         pwd.setPreferredSize(new Dimension(150, 25));
         pane = new JPanel();
 
@@ -137,13 +147,13 @@ public class BaseConfigForm {
             config.setBaseDbUrl( dbUrl.getText());
             config.setBaseDbUsername(use.getText());
             config.setBaseDbPassword(new String(pwd.getPassword()));
-            config.setUseDb(checkbox.getState());
-            config.setDropTable(rebuild.getState());
+            config.setUseDb(checkbox.isSelected());
+            config.setDropTable(rebuild.isSelected());
         });
     }
 
     private void update() {
-        ConfigDataHolder.updateBaseConfig(Objects.toString(js.getSelectedItem()), dbUrl.getText(), use.getText(), new String(pwd.getPassword()), checkbox.getState(),rebuild.getState());
+        ConfigDataHolder.updateBaseConfig(Objects.toString(js.getSelectedItem()), dbUrl.getText(), use.getText(), new String(pwd.getPassword()), checkbox.isSelected(),rebuild.isSelected());
     }
 
     public JPanel getForm() {

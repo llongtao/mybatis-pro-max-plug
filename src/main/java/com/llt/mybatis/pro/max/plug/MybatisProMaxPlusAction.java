@@ -23,8 +23,8 @@ public class MybatisProMaxPlusAction extends AnAction {
         }
         ConfigDataHolder.setContext(e.getProject());
         MainDialog mainDialog = new MainDialog(e.getProject(),e);
-        //是否允许用户通过拖拽的方式扩大或缩小你的表单框，我这里定义为true，表示允许
-        mainDialog.setResizable(false);
+        //是否允许用户通过拖拽的方式扩大或缩小你的表单框
+        mainDialog.setResizable(true);
         mainDialog.show();
 
     }

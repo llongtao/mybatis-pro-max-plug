@@ -36,21 +36,6 @@ public class MainSwing {
     private JPanel south = new JPanel();
 
 
-    public JPanel initNorth() {
-
-        //定义表单的标题部分，放置到IDEA会话框的顶部位置
-
-        JLabel title = new JLabel("表单标题");
-        //字体样式
-        title.setFont(new Font("微软雅黑", Font.PLAIN, 26));
-        //水平居中
-        title.setHorizontalAlignment(SwingConstants.CENTER);
-        //垂直居中
-        title.setVerticalAlignment(SwingConstants.CENTER);
-        north.add(title);
-
-        return north;
-    }
 
     public JPanel initCenter(Project project, AnActionEvent e) {
 
@@ -107,20 +92,29 @@ public class MainSwing {
 
         JPanel left = new BaseConfigForm().getForm();
 
+        left.setMinimumSize(new Dimension(200, 150));
         left.setPreferredSize(new Dimension(200, 150));
         center.add(left, leftGrid);
 
 
 
         JBScrollPane right = new JBScrollPane(new ModelConfigTable().getModelConfigTable());
+        right.setMinimumSize(new Dimension(550, 150));
         right.setPreferredSize(new Dimension(550, 150));
-        center.add(new Label("公共属性配置"),topGrid);
+        JLabel commonTitle = new JLabel("公共属性配置");
+        //commonTitle.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+        commonTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        center.add(commonTitle,topGrid);
         center.add(right, rightGrid);
-        center.add(new Label("生成器配置"),midGrid);
+
+        JLabel genTitle = new JLabel("生成器配置");
+        //genTitle.setFont(new Font("微软雅黑", Font.PLAIN, 20));
+        genTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        center.add(genTitle,midGrid);
 
         JBScrollPane jScrollPane = new JBScrollPane(new BuildConfigTable(project).getBuildConfigTable());
+        jScrollPane.setMinimumSize(new Dimension(750, 200));
         jScrollPane.setPreferredSize(new Dimension(750, 200));
-
         center.add(jScrollPane, bottomGrid);
 
         return center;
